@@ -50,3 +50,6 @@ class Kunden(db.Model):
     NachName = db.Column(db.String(64), nullable=False)
     Geburtsdatum = db.Column(db.Date, nullable=False)
     Email = db.Column(db.String(64), nullable=False)
+
+
+    
