@@ -4,18 +4,14 @@ from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
+class Kunden(db.Model):
+    __tablename__ = 'kunden'
 
-
-class Ausleihen(db.Model):
-    __tablename__ = 'ausleihen'
-
-    AusleihenID = db.Column(db.Integer, primary_key=True, unique=True)
-    AusleiheDatum = db.Column(db.Date, nullable=False)
-    RückgabeDatum = db.Column(db.Date, nullable=False)
-    KundenID = db.Column(db.Integer)
-    FahrradIdD = db.Column(db.Integer)
-
-
+    KundenID = db.Column(db.Integer, primary_key=True, unique=True)
+    VorName = db.Column(db.String(64), nullable=False)
+    NachName = db.Column(db.String(64), nullable=False)
+    Geburtsdatum = db.Column(db.Date, nullable=False)
+    Email = db.Column(db.String(64), nullable=False)
 
 class Fahrrad(db.Model):
     __tablename__ = 'fahrrad'
@@ -25,8 +21,6 @@ class Fahrrad(db.Model):
     Farbe = db.Column(db.String(32), nullable=False)
     Reifen = db.Column(db.String(128), nullable=False)
     Preis = db.Column(db.Numeric(10, 0), nullable=False)
-
-
 
 class Fahrradmarke(db.Model):
     __tablename__ = 'fahrradmarke'
@@ -40,16 +34,11 @@ class Fahrradmarke(db.Model):
 
     fahrrad = db.relationship('Fahrrad', primaryjoin='Fahrradmarke.FahrradID == Fahrrad.FahrradID', backref='fahrradmarkes')
 
+class Ausleihen(db.Model):
+    __tablename__ = 'ausleihen'
 
-
-class Kunden(db.Model):
-    __tablename__ = 'kunden'
-
-    KundenID = db.Column(db.Integer, primary_key=True, unique=True)
-    VorName = db.Column(db.String(64), nullable=False)
-    NachName = db.Column(db.String(64), nullable=False)
-    Geburtsdatum = db.Column(db.Date, nullable=False)
-    Email = db.Column(db.String(64), nullable=False)
-
-
-    
+    AusleihenID = db.Column(db.Integer, primary_key=True, unique=True)
+    AusleiheDatum = db.Column(db.Date, nullable=False)
+    RückgabeDatum = db.Column(db.Date, nullable=False)
+    KundenID = db.Column(db.Integer)
+    FahrradIdD = db.Column(db.Integer)  
