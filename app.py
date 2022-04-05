@@ -42,4 +42,4 @@ app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:root@localhost/fahrradApp"
 csrf = CSRFProtect(app)
 db.init_app(app)
 
-app.run(debug=True)
+app.run(debug=True)//
