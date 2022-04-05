@@ -41,4 +41,4 @@ class Ausleihen(db.Model):
     AusleiheDatum = db.Column(db.Date, nullable=False)
     RückgabeDatum = db.Column(db.Date, nullable=False)
     KundenID = db.Column(db.Integer)
-    FahrradIdD = db.Column(db.Integer)  
+    FahrradID = db.Column(db.Integer)  
