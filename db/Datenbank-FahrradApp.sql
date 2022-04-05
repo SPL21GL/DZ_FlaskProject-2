@@ -35,5 +35,5 @@ AusleihenID int auto_increment unique key primary key,
 AusleiheDatum date not null,
 RückgabeDatum date not null,
 KundenID int,
-FahrradIdD int
+FahrradID int
 );
