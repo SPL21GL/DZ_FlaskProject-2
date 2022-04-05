@@ -31,9 +31,9 @@ def index():
     items = db.session.query(Kunden).all()
 
     return render_template("index.html", \
-        headline="Todo Items", \
+        headline="Fahrrad-App", \
         form = addKundenForm, \
-        items = items)
+        Kunden = Kunden)
 
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
