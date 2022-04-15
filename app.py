@@ -3,8 +3,10 @@ from flask.templating import render_template
 from flask_wtf.csrf import CSRFProtect
 from addKundenForm import AddKundenForm
 from model.models import Fahrrad, Kunden, db
+import sqlalchemy
 
 app = Flask(__name__)
+app.secret_key = "VerySecretSecretKey"
 
 @app.route("/")
 def index():
@@ -17,9 +19,9 @@ def index():
         print(addKundenForm.Email.data)
         
         newKunde = Kunden()
-        newKunde.title = addKundenForm.VorName.data
-        newKunde.description = addKundenForm.NachName.data
-        newKunde.dueDate = addKundenForm.Geburtsdatum.data
+        newKunde.VorName = addKundenForm.VorName.data
+        newKunde.NachName = addKundenForm.NachName.data
+        newKunde.Geburtsdatum = addKundenForm.Geburtsdatum.data
         newKunde.isDone = addKundenForm.Email.data
 
         db.session.add(newKunde)
@@ -28,12 +30,12 @@ def index():
         return redirect("/")
         
     
-    items = db.session.query(Kunden).all()
+    kund = db.session.query(Kunden).all()
 
     return render_template("index.html", \
         headline="Fahrrad-App", \
         form = addKundenForm, \
-        Kunden = Kunden)
+        kund = Kunden)
 
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
