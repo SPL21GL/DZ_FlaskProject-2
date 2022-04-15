@@ -7,4 +7,4 @@ class AddKundenForm(FlaskForm):
     VorName = StringField("VorName",  validators=[validators.InputRequired()])
     NachName = StringField("NachName",  validators=[validators.InputRequired()])
     Geburtsdatum = DateField("Geburtsdatum")
-    Email = TextAreaField("Email")
+    Email = StringField("Email",  validators=[validators.InputRequired()])
