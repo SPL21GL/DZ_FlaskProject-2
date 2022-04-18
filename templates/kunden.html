@@ -1,0 +1,63 @@
+{%block body%}
+<h2>Kunden</h2>
+
+<form method="post">
+    
+    {{form1.csrf_token}}
+
+    <div class="row mb-3">
+        <label for="VorName" class="col-sm-2 col-form-label">Vorname</label>
+        <div class="col-sm-10">
+            {{form1.Vorname()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="NachName" class="col-sm-2 col-form-label">Nachname</label>
+        <div class="col-sm-10">
+            {{form1.Nachname()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Geburtsdatum" class="col-sm-2 col-form-label">Geburtsdatum</label>
+        <div class="col-sm-10">
+            {{form1.Geburtsdatum()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            {{form1.Email()}}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Speichern</button>
+    
+</form>
+
+<table class="table">
+    <thead>
+      <tr>
+        <td scope="col">KundenId</td>
+        <td scope="col">Vorname</td>
+        <td scope="col">Nachname</td>
+        <td scope="col">Geburtsdatum</td>
+        <td scope="col">Email</td>
+      </tr>
+    </thead>
+    <tbody>
+        {%for Kunden in Kunden:%}
+        <tr>
+            <td scope="row">{{Kunden.KundenId}}</td>
+            <td>{{Kunden.Vorname}}</td>
+            <td>{{Kunden.Nachname}}</td>
+            <td>{{Kunden.Geburtsdatum}}</td>
+            <td>{{Kunden.Email}}</td>
+        </tr>
+        {%endfor%}
+
+    </tbody>        
+</table>
+{%endblock%}
