@@ -1,0 +1,67 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<h2>🚲 Fahrrad</h2>
+
+<form method="post">
+    
+    {{form3.csrf_token}}
+
+    <div class="row mb-3">
+        <label for="Model" class="col-sm-2 col-form-label">Model</label>
+        <div class="col-sm-10">
+            {{form3.Model()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Farbe" class="col-sm-2 col-form-label">Farbe</label>
+        <div class="col-sm-10">
+            {{form3.Farbe}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Reifen" class="col-sm-2 col-form-label">Reifen</label>
+        <div class="col-sm-10">
+            {{form3.Reifen()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Preis" class="col-sm-2 col-form-label">Preis</label>
+        <div class="col-sm-10">
+            {{form3.Preis()}}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Speichern</button><br>
+</br>
+    
+</form>
+
+<table class="table">
+    <thead class="table-dark">
+      <tr>
+        <td scope="col">FahrradId</td>
+        <td scope="col">Model</td>
+        <td scope="col">Farbe</td>
+        <td scope="col">Reifen</td>
+        <td scope="col">Preis</td>
+      </tr>
+    </thead>
+    <tbody>
+        {%for Fahrrad in Fahrrad:%}
+        <tr>
+            <td scope="row">{{Kunden.FahrradId}}</td>
+            <td>{{Fahrrad.Model}}</td>
+            <td>{{Fahrrad.Farbe}}</td>
+            <td>{{Fahrrad.Reifen}}</td>
+            <td>{{Fahrrad.Preis}}</td>
+        </tr>
+        {%endfor%}
+
+    </tbody>        
+</table>
+{%endblock%}
