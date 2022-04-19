@@ -1,0 +1,54 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<h2>🤝🏻 Ausleihen</h2>
+
+<form method="post">
+    
+    {{form7.csrf_token}}
+
+    <div class="row mb-3">
+        <label for="AsleiheDatum" class="col-sm-2 col-form-label">Asleihe-Datum</label>
+        <div class="col-sm-10">
+            {{form7.AsleiheDatum()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="RückgabeDatum" class="col-sm-2 col-form-label">Rückgabe-Datum</label>
+        <div class="col-sm-10">
+            {{form7.RückgabeDatum}}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Speichern</button><br>
+</br>
+    
+</form>
+
+<table class="table">
+    <thead class="table-dark">
+      <tr>
+        <td scope="col">AusleihenID</td>
+        <td scope="col">KundenID</td>
+        <td scope="col">FahrradID</td>
+        <td scope="col">Ausleihe-Datum</td>
+        <td scope="col">Rückgabe-Datum</td>
+
+      </tr>
+    </thead>
+    <tbody>
+        {%for Ausleihe in Ausleihen:%}
+        <tr>
+            <td scope="row">{{Ausleihe.AusleihenID}}</td>
+            <td scope="row">{{Ausleihe.KundenID}}</td>
+            <td scope="row">{{Ausleihe.FahrradID}}</td>
+            <td>{{Ausleihe.Ausleihe-Datum}}</td>
+            <td>{{Ausleihe.Rückgabe-Datum}}</td>
+        </tr>
+        {%endfor%}
+
+    </tbody>        
+</table>
+{%endblock%}
