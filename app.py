@@ -2,9 +2,11 @@ from flask import Flask, redirect
 from flask.templating import render_template
 from flask_wtf.csrf import CSRFProtect
 from addFahrradFrom import AddFahrradForm
+from addFahrradMarkenForm import AddFahrradMarkenForm
 from addKundenForm import AddKundenForm
 from addFahrradFrom import AddFahrradForm
-from model.models import Fahrrad, Kunden, db
+from addFahrradMarkenForm import AddFahrradMarkenForm
+from model.models import Fahrrad, Fahrradmarke, Kunden, db
 import sqlalchemy
 
 app = Flask(__name__)
@@ -90,6 +92,53 @@ def Fahrrad_requests():
         headline = "Fahrrad-App", \
         form3 = addFahrradForm, \
         items3 = items3)
+
+
+@app.route("/", methods=["get","post"])
+def base_2():
+    addFahrradMarkenForm = AddFahrradMarkenForm()
+    
+    if addFahrradMarkenForm.validate_on_submit():
+        print(addFahrradMarkenForm.MarkenName.data)
+        print(addFahrradMarkenForm.CEO.data)
+        print(addFahrradMarkenForm.Email.data)
+        print(addFahrradMarkenForm.Standort.data)
+        
+        newFahrradMarke = Fahrradmarke()
+        newFahrradMarke.MarkenName = addFahrradMarkenForm.MarkenName.data
+        newFahrradMarke.CEO = addFahrradMarkenForm.CEO.data
+        newFahrradMarke.Email = addFahrradMarkenForm.Email.data
+        newFahrradMarke.Standort = addFahrradMarkenForm.Standort.data
+
+        db.session.add(newFahrradMarke)
+        db.session.commit()
+
+        return redirect("/")
+        
+    
+    items4 = db.session.query(Fahrradmarke).all()
+
+    return render_template("index.html", \
+        headline="Fahrrad-App", \
+        form4 = AddFahrradMarkenForm, \
+        items4 = items4)
+
+
+@app.route("/fahrradMarke.html")
+def FahrradMarke_requests():
+    addFahrradMarkenForm = AddFahrradMarkenForm()
+    items5 = db.session.query(Fahrradmarke).all()
+
+    return render_template("/fahrradMarke.html", \
+        headline = "Fahrrad-App", \
+        form5 = addFahrradMarkenForm, \
+        items5 = items5)
+
+
+
+
+
+
 
 
 
