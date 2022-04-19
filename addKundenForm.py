@@ -4,7 +4,7 @@ from wtforms.fields.simple import StringField, TextAreaField
 from wtforms import validators
 
 class AddKundenForm(FlaskForm):
-    Vorname = StringField("VorName",  validators=[validators.InputRequired()])
-    Nachname = StringField("NachName",  validators=[validators.InputRequired()])
+    VorName = StringField("Vorname",  validators=[validators.InputRequired()])
+    NachName = StringField("Nachname",  validators=[validators.InputRequired()])
     Geburtsdatum = DateField("Geburtsdatum")
     Email = StringField("Email",  validators=[validators.InputRequired()])
