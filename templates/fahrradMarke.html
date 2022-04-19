@@ -1,0 +1,76 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<h2>🚴🏻‍♀️ Fahrradmarke</h2>
+
+<form method="post">
+    
+    {{form4.csrf_token}}
+
+    <div class="row mb-3">
+        <label for="FahrradID" class="col-sm-2 col-form-label">FahrradID</label>
+        <div class="col-sm-10">
+            {{form4.FahrradID()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="MarkenName" class="col-sm-2 col-form-label">Markenname</label>
+        <div class="col-sm-10">
+            {{form4.MarkenName()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="CEO" class="col-sm-2 col-form-label">CEO</label>
+        <div class="col-sm-10">
+            {{form4.CEO()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            {{form4.Email()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Standort" class="col-sm-2 col-form-label">Standort</label>
+        <div class="col-sm-10">
+            {{form4.Standort()}}
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Speichern</button><br>
+</br>
+    
+</form>
+
+<table class="table">
+    <thead class="table-dark">
+      <tr>
+        <td scope="col">FahrradID</td>
+        <td scope="col">Markenname</td>
+        <td scope="col">CEO</td>
+        <td scope="col">Email</td>
+        <td scope="col">Standort</td>
+      </tr>
+    </thead>
+    <tbody>
+        {%for Fahrradmarke in Fahrradmarken:%}
+        <tr>
+            <td scope="row">{{Fahrradmarke.FahrradMarkenId}}</td>
+            <td scope="row">{{Fahrradmarke.FahrradID}}</td>
+            <td>{{Fahrradmarke.Markenname}}</td>
+            <td>{{Fahrradmarke.CEO}}</td>
+            <td>{{Fahrradmarke.Email}}</td>
+            <td>{{Fahrradmarke.Standort}}</td>
+        </tr>
+        {%endfor%}
+
+    </tbody>        
+</table>
+{%endblock%}
