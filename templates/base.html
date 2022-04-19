@@ -1,4 +1,4 @@
-<!doctype html>
+<!Doctype html>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -30,22 +30,37 @@
                 <a class="nav-link" href="#">🏠 Home</a>
               </li>
               <li class="nav-item fs-5 px-2">
-                <a class="nav-link" href="kunden.html">👩‍💼 Kunden</a>
+                <a class="nav-link" href="kunden.html">👩🏻‍💼 Kunden</a>
               </li>
               <li class="nav-item fs-5 px-2">
-                <a class="nav-link" href="#">🚲 Fahrrad</a>
+                <a class="nav-link" href="fahrrad.html">🚲 Fahrrad</a>
               </li>
               <li class="nav-item fs-5 px-2">
-                <a class="nav-link" href="#">🚴‍♀️ Fahrradmarke</a>
+                <a class="nav-link" href="fahrradMarke.html">🚴🏻‍♀️ Fahrradmarke</a>
               </li>
               <li class="nav-item fs-5 px-2">
-                <a class="nav-link" href="#">🤝 Ausleihen</a>
+                <a class="nav-link" href="#">🤝🏻 Ausleihen</a>
               </li>
             </ul>
           </div>
         </div>
       </nav>
-</div>   
+
+
+
+      {% with messages = get_flashed_messages() %}
+      {% if messages %}
+      <div class="alert alert-warning alert-dismissible fade show" role="alert">
+        {% for message in messages %}
+        {{ message }}
+        {% endfor %}
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+      </div>
+      {% endif %}
+      {% endwith %}
+      
+      
+      {%block body%} {%endblock%}
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <script src="/static/classicModels.js"></script>
