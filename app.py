@@ -6,7 +6,8 @@ from addFahrradMarkenForm import AddFahrradMarkenForm
 from addKundenForm import AddKundenForm
 from addFahrradFrom import AddFahrradForm
 from addFahrradMarkenForm import AddFahrradMarkenForm
-from model.models import Fahrrad, Fahrradmarke, Kunden, db
+from addAusleihenForm import AddAusleihenForm
+from model.models import Ausleihen, Fahrrad, Fahrradmarke, Kunden, db
 import sqlalchemy
 
 app = Flask(__name__)
@@ -48,7 +49,7 @@ def Kunden_requests():
     items1 = db.session.query(Kunden).all()
 
     return render_template("/kunden.html", \
-        headline = "Fahrrad-App", \
+        headline1 = "Fahrrad-App", \
         form1 = addKundenForm, \
         items1 = items1)
 
@@ -78,7 +79,7 @@ def base_1():
     items2 = db.session.query(Fahrrad).all()
 
     return render_template("index.html", \
-        headline="Fahrrad-App", \
+        headline2 ="Fahrrad-App", \
         form2 = AddFahrradForm, \
         items2 = items2)
 
@@ -89,7 +90,7 @@ def Fahrrad_requests():
     items3 = db.session.query(Fahrrad).all()
 
     return render_template("/fahrrad.html", \
-        headline = "Fahrrad-App", \
+        headline3 = "Fahrrad-App", \
         form3 = addFahrradForm, \
         items3 = items3)
 
@@ -119,7 +120,7 @@ def base_2():
     items4 = db.session.query(Fahrradmarke).all()
 
     return render_template("index.html", \
-        headline="Fahrrad-App", \
+        headline4="Fahrrad-App", \
         form4 = AddFahrradMarkenForm, \
         items4 = items4)
 
@@ -130,16 +131,46 @@ def FahrradMarke_requests():
     items5 = db.session.query(Fahrradmarke).all()
 
     return render_template("/fahrradMarke.html", \
-        headline = "Fahrrad-App", \
+        headline5 = "Fahrrad-App", \
         form5 = addFahrradMarkenForm, \
         items5 = items5)
 
 
+@app.route("/", methods=["get","post"])
+def base_3():
+    addAusleihenForm = AddAusleihenForm()
+    
+    if addAusleihenForm.validate_on_submit():
+        print(addAusleihenForm.AusleiheDatum.data)
+        print(addAusleihenForm.RückgabeDatum.data)
+        
+        newAusleihen = Ausleihen()
+        newAusleihen.AusleiheDatum = addAusleihenForm.AusleiheDatum.data
+        newAusleihen.RückgabeDatum = addAusleihenForm.RückgabeDatum.data
+
+        db.session.add(newAusleihen)
+        db.session.commit()
+
+        return redirect("/")
+        
+    
+    items6 = db.session.query(Ausleihen).all()
+
+    return render_template("index.html", \
+        headline6 ="Fahrrad-App", \
+        form6 = AddAusleihenForm, \
+        items6 = items6)
 
 
+@app.route("/ausleihen.html")
+def Ausleihen_requests():
+    addAusleihenForm = AddAusleihenForm()
+    items7 = db.session.query(Ausleihen).all()
 
-
-
+    return render_template("/ausleihen.html", \
+        headline7 = "Fahrrad-App", \
+        form7 = addAusleihenForm, \
+        items7 = items7)
 
 
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
