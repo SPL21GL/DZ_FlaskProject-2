@@ -9,9 +9,9 @@
     {{form7.csrf_token}}
 
     <div class="row mb-3">
-        <label for="AsleiheDatum" class="col-sm-2 col-form-label">Asleihe-Datum</label>
+        <label for="AsleiheDatum" class="col-sm-2 col-form-label">Ausleihe-Datum</label>
         <div class="col-sm-10">
-            {{form7.AsleiheDatum()}}
+            {{form7.AusleiheDatum()}}
         </div>
     </div>
 
@@ -31,10 +31,11 @@
     <thead class="table-dark">
       <tr>
         <td scope="col">AusleihenID</td>
-        <td scope="col">KundenID</td>
-        <td scope="col">FahrradID</td>
         <td scope="col">Ausleihe-Datum</td>
         <td scope="col">Rückgabe-Datum</td>
+        <td scope="col">KundenID</td>
+        <td scope="col">FahrradID</td>
+
 
       </tr>
     </thead>
@@ -42,10 +43,11 @@
         {%for Ausleihe in Ausleihen:%}
         <tr>
             <td scope="row">{{Ausleihe.AusleihenID}}</td>
+            <td>{{Ausleihe.AusleiheDatum}}</td>
+            <td>{{Ausleihe.RückgabeDatum}}</td>
             <td scope="row">{{Ausleihe.KundenID}}</td>
             <td scope="row">{{Ausleihe.FahrradID}}</td>
-            <td>{{Ausleihe.Ausleihe-Datum}}</td>
-            <td>{{Ausleihe.Rückgabe-Datum}}</td>
+
         </tr>
         {%endfor%}
 
