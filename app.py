@@ -4,8 +4,6 @@ from flask_wtf.csrf import CSRFProtect
 from addFahrradFrom import AddFahrradForm
 from addFahrradMarkenForm import AddFahrradMarkenForm
 from addKundenForm import AddKundenForm
-from addFahrradFrom import AddFahrradForm
-from addFahrradMarkenForm import AddFahrradMarkenForm
 from addAusleihenForm import AddAusleihenForm
 from model.models import Ausleihen, Fahrrad, Fahrradmarke, Kunden, db
 import sqlalchemy
