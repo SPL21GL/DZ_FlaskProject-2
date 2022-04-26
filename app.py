@@ -161,7 +161,6 @@ def base_3():
         form6 = AddAusleihenForm, \
         items6 = items6)
 
-
 @app.route("/ausleihen.html")
 def Ausleihen_requests():
     addAusleihenForm = AddAusleihenForm()
