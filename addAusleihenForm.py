@@ -6,3 +6,5 @@ from wtforms import validators
 class AddAusleihenForm(FlaskForm):
     AusleiheDatum = DateField("AusleiheDatum")
     RückgabeDatum = DateField("AusleiheDatum")
+    KundenID = StringField("KundenID",  validators=[validators.InputRequired()])
+    FahrradID = StringField("FahrradID",  validators=[validators.InputRequired()])
