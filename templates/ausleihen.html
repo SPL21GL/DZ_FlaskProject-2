@@ -31,10 +31,11 @@
     <thead class="table-dark">
       <tr>
         <td scope="col">AusleihenID</td>
-        <td scope="col">Ausleihe-Datum</td>
-        <td scope="col">Rückgabe-Datum</td>
         <td scope="col">KundenID</td>
         <td scope="col">FahrradID</td>
+        <td scope="col">Ausleihe-Datum</td>
+        <td scope="col">Rückgabe-Datum</td>
+
 
 
       </tr>
@@ -43,10 +44,11 @@
         {%for Ausleihe in Ausleihen:%}
         <tr>
             <td scope="row">{{Ausleihe.AusleihenID}}</td>
-            <td>{{Ausleihe.AusleiheDatum}}</td>
-            <td>{{Ausleihe.RückgabeDatum}}</td>
             <td scope="row">{{Ausleihe.KundenID}}</td>
             <td scope="row">{{Ausleihe.FahrradID}}</td>
+            <td>{{Ausleihe.AusleiheDatum}}</td>
+            <td>{{Ausleihe.RückgabeDatum}}</td>
+
 
         </tr>
         {%endfor%}
