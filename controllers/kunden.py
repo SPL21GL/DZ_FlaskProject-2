@@ -1,18 +1,32 @@
-from flask import Flask, redirect, request
 from flask.templating import render_template
 from flask import Blueprint
-import sqlalchemy
-import sqlalchemy.orm
-
-from model.models import Kunden, db
+from forms.addKundenForm import AddKundenForm
+from model.models import db, Kunden
 
 kunden_blueprint = Blueprint('kunden_blueprint', __name__)
 
-@kunden_blueprint.route("/kunden")
+
+@kunden_blueprint.route("/Kunden.html", methods=["get", "post"])
 def kunden():
-   
-    session: sqlalchemy.orm.scoping.scoped_session = db.session
+    addKundenForm = AddKundenForm()
+    items = db.session.query(Kunden).all()
 
-    #skunden = session.query(Kunden).Kunden(Kunden.orderNumber).all()
+    if addKundenForm.validate_on_submit():
+        print(addKundenForm.VorName.data)
+        print(addKundenForm.NachName.data)
+        print(addKundenForm.Geburtsdatum.data)
+        print(addKundenForm.Email.data)
 
-    return render_template("kunden/kunden.html", kunden=kunden)
+        newKunde = Kunden()
+        newKunde.VorName = addKundenForm.VorName.data
+        newKunde.NachName = addKundenForm.NachName.data
+        newKunde.Geburtsdatum = addKundenForm.Geburtsdatum.data
+        newKunde.Email = addKundenForm.Email.data
+
+        db.session.add(newKunde)
+        db.session.commit()
+
+    return render_template("/kunden.html",
+                           headline1="Fahrrad-App",
+                           form1=addKundenForm,
+                           items=items)
