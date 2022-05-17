@@ -5,7 +5,7 @@
 <h2>🚴🏻‍♀️ Fahrradmarke</h2>
 
 <form method="post">
-    
+
     {{form5.csrf_token}}
 
     <div class="row mb-3">
@@ -38,20 +38,20 @@
 
 
     <button type="submit" class="btn btn-primary">Speichern</button><br>
-</br>
-    
+    </br>
+
 </form>
 
 <table class="table">
     <thead class="table-dark">
-      <tr>
-        <td scope="col">FahrradMarkenId</td>  
-        <td scope="col">FahrradID</td>
-        <td scope="col">Markenname</td>
-        <td scope="col">CEO</td>
-        <td scope="col">Email</td>
-        <td scope="col">Standort</td>
-      </tr>
+        <tr>
+            <td scope="col">FahrradMarkenId</td>
+            <td scope="col">FahrradID</td>
+            <td scope="col">Markenname</td>
+            <td scope="col">CEO</td>
+            <td scope="col">Email</td>
+            <td scope="col">Standort</td>
+        </tr>
     </thead>
     <tbody>
         {%for Fahrradmarke in Fahrradmarken:%}
@@ -65,6 +65,6 @@
         </tr>
         {%endfor%}
 
-    </tbody>        
+    </tbody>
 </table>
 {%endblock%}
