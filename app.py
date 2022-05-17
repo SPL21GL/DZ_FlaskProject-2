@@ -6,7 +6,6 @@ from controllers.kunden import kunden_blueprint
 
 from flask_wtf.csrf import CSRFProtect
 
-import sqlalchemy
 app = Flask(__name__)
 app.secret_key = "VerySecretSecretKey"
 
@@ -20,5 +19,8 @@ db.init_app(app)
 
 app.register_blueprint(index_blueprint)
 app.register_blueprint(kunden_blueprint)
+app.register_blueprint(fahrrad_blueprint)
+app.register_blueprint(fahrradMarke_blueprint)
+app.register_blueprint(ausleihen_blueprint)
 
 app.run(debug=True)
