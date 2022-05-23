@@ -1,15 +1,15 @@
 from flask.templating import render_template
-from flask import Blueprint
+from flask import Blueprint, redirect
 from forms.addKundenForm import AddKundenForm
 from model.models import db, Kunden
 
 kunden_blueprint = Blueprint('kunden_blueprint', __name__)
 
 
-@kunden_blueprint.route("/Kunden.html", methods=["get", "post"])
-def kunden():
+@kunden_blueprint.route("/kunden", methods=["get", "post"])
+def kunden_base():
     addKundenForm = AddKundenForm()
-    items = db.session.query(Kunden).all()
+    kunden = db.session.query(Kunden).all()
 
     if addKundenForm.validate_on_submit():
         print(addKundenForm.VorName.data)
@@ -26,7 +26,8 @@ def kunden():
         db.session.add(newKunde)
         db.session.commit()
 
+        return redirect("/kunden")
+
     return render_template("/kunden.html",
-                           headline1="Fahrrad-App",
-                           form1=addKundenForm,
-                           items=items)
+                           form=addKundenForm,
+                           kunden=kunden)

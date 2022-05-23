@@ -6,8 +6,8 @@ from model.models import db, Fahrrad
 fahrrad_blueprint = Blueprint('fahrrad_blueprint', __name__)
 
 
-@fahrrad_blueprint.route("/Fahrrad.html", methods=["get", "post"])
-def kunden():
+@fahrrad_blueprint.route("/fahrrad.html", methods=["get", "post"])
+def fahrrad_base():
     addFahrradForm = AddFahrradForm()
     items3 = db.session.query(Fahrrad).all()
 

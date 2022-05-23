@@ -2,6 +2,9 @@ from flask import Flask
 from model.models import db
 from controllers.index import index_blueprint
 from controllers.kunden import kunden_blueprint
+from controllers.fahrrad import fahrrad_blueprint
+from controllers.fahrradMarken import fahrradMarken_blueprint
+from controllers.ausleihen import ausleihen_blueprint
 
 
 from flask_wtf.csrf import CSRFProtect
@@ -20,7 +23,7 @@ db.init_app(app)
 app.register_blueprint(index_blueprint)
 app.register_blueprint(kunden_blueprint)
 app.register_blueprint(fahrrad_blueprint)
-app.register_blueprint(fahrradMarke_blueprint)
+app.register_blueprint(fahrradMarken_blueprint)
 app.register_blueprint(ausleihen_blueprint)
 
 app.run(debug=True)
