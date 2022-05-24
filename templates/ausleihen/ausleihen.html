@@ -6,19 +6,19 @@
 
 <form method="post">
 
-    {{form7.csrf_token}}
+    {{form.csrf_token}}
 
     <div class="row mb-3">
         <label for="AsleiheDatum" class="col-sm-2 col-form-label">Ausleihe-Datum</label>
         <div class="col-sm-10">
-            {{form7.AusleiheDatum()}}
+            {{form.AusleiheDatum()}}
         </div>
     </div>
 
     <div class="row mb-3">
         <label for="RückgabeDatum" class="col-sm-2 col-form-label">Rückgabe-Datum</label>
         <div class="col-sm-10">
-            {{form7.RückgabeDatum}}
+            {{form.RückgabeDatum}}
         </div>
     </div>
 

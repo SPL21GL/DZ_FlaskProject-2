@@ -1,15 +1,15 @@
 from flask.templating import render_template
-from flask import Blueprint
+from flask import Blueprint, redirect
 from forms.addFahrradFrom import AddFahrradForm
 from model.models import db, Fahrrad
 
 fahrrad_blueprint = Blueprint('fahrrad_blueprint', __name__)
 
 
-@fahrrad_blueprint.route("/fahrrad.html", methods=["get", "post"])
+@fahrrad_blueprint.route("/fahrrad", methods=["get", "post"])
 def fahrrad_base():
     addFahrradForm = AddFahrradForm()
-    items3 = db.session.query(Fahrrad).all()
+    fahrrad = db.session.query(Fahrrad).all()
 
     if addFahrradForm.validate_on_submit():
         print(addFahrradForm.Model.data)
@@ -26,7 +26,8 @@ def fahrrad_base():
         db.session.add(newFahrrad)
         db.session.commit()
 
-    return render_template("/fahrrad.html",
-                           headline3="Fahrrad-App",
-                           form3=addFahrradForm,
-                           items3=items3)
+        return redirect("/fahrrad")
+
+    return render_template("fahrrad/fahrrad.html",
+                           form=addFahrradForm,
+                           fahrrad=fahrrad)
