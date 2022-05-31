@@ -44,7 +44,7 @@
 <table class="table">
     <thead class="table-dark">
       <tr>
-        <td scope="col">KundenId</td>
+        <td scope="col">KundenID</td>
         <td scope="col">Vorname</td>
         <td scope="col">Nachname</td>
         <td scope="col">Geburtsdatum</td>
@@ -52,13 +52,13 @@
       </tr>
     </thead>
     <tbody>
-        {%for Kunde in Kunden:%}
+        {%for kunde in kunden%}
         <tr>
-            <td>{{Kunde.KundenId}}</td>
-            <td>{{Kunde.VorName}}</td>
-            <td>{{Kunde.NachName}}</td>
-            <td>{{Kunde.Geburtsdatum}}</td>
-            <td>{{Kunde.Email}}</td>
+            <td scope="row">{{kunde.KundenID}}</td>
+            <td>{{kunde.VorName}}</td>
+            <td>{{kunde.NachName}}</td>
+            <td>{{kunde.Geburtsdatum}}</td>
+            <td>{{kunde.Email}}</td>
         </tr>
         {%endfor%}
 

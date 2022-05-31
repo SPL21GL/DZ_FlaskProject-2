@@ -38,14 +38,14 @@
 
 
     <button type="submit" class="btn btn-primary">Speichern</button><br>
-    </br>
+</br>
 
 </form>
 
 <table class="table">
     <thead class="table-dark">
         <tr>
-            <td scope="col">FahrradMarkenId</td>
+            <td scope="col">FahrradMarkenID</td>
             <td scope="col">FahrradID</td>
             <td scope="col">Markenname</td>
             <td scope="col">CEO</td>
@@ -54,14 +54,14 @@
         </tr>
     </thead>
     <tbody>
-        {%for Fahrradmarke in Fahrradmarken:%}
+        {%for fahrradMarken in fahrradMarke%}
         <tr>
-            <td scope="row">{{Fahrradmarke.FahrradMarkenId}}</td>
-            <td scope="row">{{Fahrradmarke.FahrradID}}</td>
-            <td>{{Fahrradmarke.Markenname}}</td>
-            <td>{{Fahrradmarke.CEO}}</td>
-            <td>{{Fahrradmarke.Email}}</td>
-            <td>{{Fahrradmarke.Standort}}</td>
+            <td scope="row">{{fahrradMarken.FahrradMarkenID}}</td>
+            <td scope="row">{{fahrradMarken.FahrradID}}</td>
+            <td>{{fahrradMarken.MarkenName}}</td>
+            <td>{{fahrradMarken.CEO}}</td>
+            <td>{{fahrradMarken.Email}}</td>
+            <td>{{fahrradMarken.Standort}}</td>
         </tr>
         {%endfor%}
 

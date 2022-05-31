@@ -52,13 +52,13 @@
         </tr>
     </thead>
     <tbody>
-        {%for Fahrrad in Fahrrad:%}
+        {%for fahrrad in fahrrad%}
         <tr>
-            <td scope="row">{{Kunden.FahrradId}}</td>
-            <td>{{Fahrrad.Model}}</td>
-            <td>{{Fahrrad.Farbe}}</td>
-            <td>{{Fahrrad.Reifen}}</td>
-            <td>{{Fahrrad.Preis}}</td>
+            <td scope="row">{{fahrrad.FahrradID}}</td>
+            <td>{{fahrrad.Model}}</td>
+            <td>{{fahrrad.Farbe}}</td>
+            <td>{{fahrrad.Reifen}}</td>
+            <td>{{fahrrad.Preis}}</td>
         </tr>
         {%endfor%}
 

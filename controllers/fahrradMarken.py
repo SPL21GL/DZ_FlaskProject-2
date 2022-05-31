@@ -6,7 +6,7 @@ from model.models import db, Fahrradmarke
 fahrradMarken_blueprint = Blueprint('fahrradMarken_blueprint', __name__)
 
 
-@fahrradMarken_blueprint.route("/fahrradMarke", methods=["get", "post"])
+@fahrradMarken_blueprint.route("/fahrradMarken", methods=["get", "post"])
 def fahrradMarke_base():
     addFahrradMarkenForm = AddFahrradMarkenForm()
     fahrradMarke = db.session.query(Fahrradmarke).all()
@@ -28,6 +28,6 @@ def fahrradMarke_base():
 
         return redirect("/fahrradMarken")
 
-    return render_template("fahrradMarke/fahrradMarke.html",
+    return render_template("fahrradMarke/fahrradMarken.html",
                            form=addFahrradMarkenForm,
                            fahrradMarke=fahrradMarke)

@@ -41,13 +41,13 @@
         </tr>
     </thead>
     <tbody>
-        {%for Ausleihe in Ausleihen:%}
+        {%for ausleihen in ausleihen%}
         <tr>
-            <td scope="row">{{Ausleihe.AusleihenID}}</td>
-            <td scope="row">{{Ausleihe.KundenID}}</td>
-            <td scope="row">{{Ausleihe.FahrradID}}</td>
-            <td>{{Ausleihe.AusleiheDatum}}</td>
-            <td>{{Ausleihe.RückgabeDatum}}</td>
+            <td scope="row">{{ausleihen.AusleihenID}}</td>
+            <td scope="row">{{ausleihen.KundenID}}</td>
+            <td scope="row">{{ausleihen.FahrradID}}</td>
+            <td>{{ausleihen.AusleiheDatum}}</td>
+            <td>{{ausleihen.RückgabeDatum}}</td>
 
 
         </tr>

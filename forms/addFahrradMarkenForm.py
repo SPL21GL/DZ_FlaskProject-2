@@ -4,8 +4,6 @@ from wtforms import validators
 
 
 class AddFahrradMarkenForm(FlaskForm):
-    FahrradID = StringField("FahrradID",  validators=[
-                            validators.InputRequired()])
     MarkenName = StringField("MarkenName",  validators=[
                              validators.InputRequired()])
     CEO = StringField("CEO", validators=[validators.InputRequired()])
