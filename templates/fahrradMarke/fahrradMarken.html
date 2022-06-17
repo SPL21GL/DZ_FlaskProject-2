@@ -62,6 +62,13 @@
             <td>{{fahrradMarken.CEO}}</td>
             <td>{{fahrradMarken.Email}}</td>
             <td>{{fahrradMarken.Standort}}</td>
+            <td>
+                <form method="post" action="/fahrradMarken/delete">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="FahrradMarkenID" id="FahrradMarkenID" value="{{fahrradMarken.FahrradMarkenID}}">
+                    <button class="btn btn-outline-secondary" onclick="deleteFahrradMarken(this); return false;">🗑️</a>
+                  </form>
+            </td>
         </tr>
         {%endfor%}
 

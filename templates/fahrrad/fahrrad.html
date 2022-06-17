@@ -59,6 +59,13 @@
             <td>{{fahrrad.Farbe}}</td>
             <td>{{fahrrad.Reifen}}</td>
             <td>{{fahrrad.Preis}}</td>
+            <td>
+                <form method="post" action="/fahrrad/delete">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="FahrradID" id="FahrradID" value="{{fahrrad.FahrradID}}">
+                    <button class="btn btn-outline-secondary" onclick="deleteFahrrad(this); return false;">🗑️</a>
+                  </form>
+            </td>
         </tr>
         {%endfor%}
 
