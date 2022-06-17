@@ -59,9 +59,19 @@
             <td>{{kunde.NachName}}</td>
             <td>{{kunde.Geburtsdatum}}</td>
             <td>{{kunde.Email}}</td>
+            <td>
+                <form method="post" action="/kunden/delete">
+                    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="KundenID" id="KundenID" value="{{kunde.KundenID}}">
+                    <button class="btn btn-outline-secondary" onclick="deleteKunden(this); return false;">🗑️</a>
+                  </form>
+            </td>
+            <td>
+                <button class="btn btn-outline-secondary" 
+                    onclick="window.location.href='/edit_kunden?KundenID={{kunde.KundenID}}'">✏️</button>
+            </td>
         </tr>
         {%endfor%}
-
-    </tbody>        
+    </tbody>
 </table>
 {%endblock%}
