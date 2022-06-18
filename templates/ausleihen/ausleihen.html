@@ -35,6 +35,8 @@
             <td scope="col">FahrradID</td>
             <td scope="col">AusleiheDatum</td>
             <td scope="col">RückgabeDatum</td>
+            <td scope="col"></td>
+            <td scope="col"></td>
         </tr>
     </thead>
     <tbody>
@@ -51,6 +53,10 @@
                     <input type="hidden" name="AusleihenID" id="AusleihenID" value="{{ausleihen.AusleihenID}}">
                     <button class="btn btn-outline-secondary" onclick="deleteAusleihen(this); return false;">🗑️</a>
                   </form>
+            </td>
+            <td>
+                <button class="btn btn-outline-secondary" 
+                    onclick="window.location.href='/edit_ausleihen?AusleihenID={{ausleihen.AusleihenID}}'">✏️</button>
             </td>
         </tr>
         {%endfor%}

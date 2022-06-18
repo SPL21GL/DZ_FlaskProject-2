@@ -1,0 +1,47 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<h2>🚴🏻‍♀️ Fahrradmarke</h2>
+
+<form method="post">
+
+    {{form.csrf_token}}
+
+    {{form.FahrradMarkenID}}
+
+    <div class="row mb-3">
+        <label for="MarkenName" class="col-sm-2 col-form-label">Markenname</label>
+        <div class="col-sm-10">
+            {{form.MarkenName()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="CEO" class="col-sm-2 col-form-label">CEO</label>
+        <div class="col-sm-10">
+            {{form.CEO()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Email" class="col-sm-2 col-form-label">Email</label>
+        <div class="col-sm-10">
+            {{form.Email()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Standort" class="col-sm-2 col-form-label">Standort</label>
+        <div class="col-sm-10">
+            {{form.Standort()}}
+        </div>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Speichern</button><br>
+</br>
+
+</form>
+
+{%endblock body%}

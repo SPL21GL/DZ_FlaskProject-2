@@ -49,6 +49,8 @@
             <td scope="col">Farbe</td>
             <td scope="col">Reifen</td>
             <td scope="col">Preis</td>
+            <td scope="col"></td>
+            <td scope="col"></td>
         </tr>
     </thead>
     <tbody>
@@ -65,6 +67,10 @@
                     <input type="hidden" name="FahrradID" id="FahrradID" value="{{fahrrad.FahrradID}}">
                     <button class="btn btn-outline-secondary" onclick="deleteFahrrad(this); return false;">🗑️</a>
                   </form>
+            </td>
+            <td>
+                <button class="btn btn-outline-secondary" 
+                    onclick="window.location.href='/edit_fahrrad?FahrradID={{fahrrad.FahrradID}}'">✏️</button>
             </td>
         </tr>
         {%endfor%}

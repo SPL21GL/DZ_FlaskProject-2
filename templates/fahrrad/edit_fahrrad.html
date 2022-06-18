@@ -1,0 +1,46 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<h2>🚲 Fahrrad</h2>
+
+<form method="post">
+
+    {{form.csrf_token}}
+
+    {{form.FahrradID}}
+
+    <div class="row mb-3">
+        <label for="Model" class="col-sm-2 col-form-label">Model</label>
+        <div class="col-sm-10">
+            {{form.Model()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Farbe" class="col-sm-2 col-form-label">Farbe</label>
+        <div class="col-sm-10">
+            {{form.Farbe}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Reifen" class="col-sm-2 col-form-label">Reifen</label>
+        <div class="col-sm-10">
+            {{form.Reifen()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="Preis" class="col-sm-2 col-form-label">Preis</label>
+        <div class="col-sm-10">
+            {{form.Preis()}}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Speichern</button><br>
+    </br>
+
+</form>
+
+{%endblock body%}

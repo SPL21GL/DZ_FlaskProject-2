@@ -51,6 +51,8 @@
             <td scope="col">CEO</td>
             <td scope="col">Email</td>
             <td scope="col">Standort</td>
+            <td scope="col"></td>
+            <td scope="col"></td>
         </tr>
     </thead>
     <tbody>
@@ -68,6 +70,10 @@
                     <input type="hidden" name="FahrradMarkenID" id="FahrradMarkenID" value="{{fahrradMarken.FahrradMarkenID}}">
                     <button class="btn btn-outline-secondary" onclick="deleteFahrradMarken(this); return false;">🗑️</a>
                   </form>
+            </td>
+            <td>
+                <button class="btn btn-outline-secondary" 
+                    onclick="window.location.href='/edit_fahrradMarke?FahrradMarkenID={{fahrradMarken.FahrradMarkenID}}'">✏️</button>
             </td>
         </tr>
         {%endfor%}

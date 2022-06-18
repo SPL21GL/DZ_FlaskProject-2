@@ -1,0 +1,32 @@
+{%extends 'base.html'%}
+
+{%block body%}
+
+<h2>🤝🏻 Ausleihen</h2>
+
+<form method="post">
+
+    {{form.csrf_token}}
+
+    {{form.AusleihenID}}
+
+    <div class="row mb-3">
+        <label for="AusleiheDatum" class="col-sm-2 col-form-label">AusleiheDatum</label>
+        <div class="col-sm-10">
+            {{form.AusleiheDatum()}}
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label for="RückgabeDatum" class="col-sm-2 col-form-label">RückgabeDatum</label>
+        <div class="col-sm-10">
+            {{form.RückgabeDatum}}
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Speichern</button><br>
+    </br>
+
+</form>
+
+{%endblock body%}
