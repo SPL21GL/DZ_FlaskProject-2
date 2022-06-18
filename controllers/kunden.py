@@ -55,7 +55,7 @@ def del_kunden_base():
     return redirect("/kunden")
 
 
-@kunden_blueprint.route("/kunden/edit", methods=["post"])
+@kunden_blueprint.route("/edit_kunden", methods=["post"])
 def edit_kunden_base():
     edit_Kunden = EditKundenForm()
 

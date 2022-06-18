@@ -1,8 +1,8 @@
-from flask import redirect, flash, request, render_template
-from flask import Blueprint
+from flask import redirect, flash, request, render_template, Blueprint
 from forms.addFahrradFrom import AddFahrradForm
 from forms.delete_Fahrrad import DeleteForm_Fahrrad
 from model.models import db, Fahrrad
+from forms.edit_Fahrrad import EditFahrradForm
 
 fahrrad_blueprint = Blueprint('fahrrad_blueprint', __name__)
 
@@ -33,7 +33,6 @@ def fahrrad_base():
                            form=addFahrradForm,
                            fahrrad=fahrrad)
 
-
 @fahrrad_blueprint.route("/fahrrad/delete", methods=["post"])
 def del_fahrrad_base():
     delete_Fahrrad = DeleteForm_Fahrrad()
@@ -48,6 +47,49 @@ def del_fahrrad_base():
         db.session.commit()
 
     else:
-        print("Fatal Error")
+        raise("Fatal Error")
     flash(f"Fahrrad with id {Fahrrad_to_delete} has been deleted")
     return redirect("/fahrrad")
+
+@fahrrad_blueprint.route("/edit_fahrrad", methods=["post"])
+def edit_fahrrad_base():
+    edit_Fahrrad = EditFahrradForm()
+
+    if edit_Fahrrad.validate_on_submit():
+        print("Submit wurde durchgeführt")
+
+        FahrradID = edit_Fahrrad.FahrradID.data
+        Fahrrad_to_edit = db.session.query(Fahrrad).filter(
+            Fahrrad.FahrradID == FahrradID).first()
+
+        Fahrrad_to_edit.Model = edit_Fahrrad.Model.data
+        Fahrrad_to_edit.Farbe = edit_Fahrrad.Farbe.data
+        Fahrrad_to_edit.Reifen = edit_Fahrrad.Reifen.data
+        Fahrrad_to_edit.Preis = edit_Fahrrad.Preis.data
+
+        db.session.commit()
+
+        return redirect("/fahrrad")
+
+    else:
+        raise("Fatal Error")
+
+
+@fahrrad_blueprint.route("/edit_fahrrad")
+def showEditFahrradForm():
+
+    FahrradID = request.args["FahrradID"]
+    print(FahrradID)
+
+    Fahrrad_to_edit = db.session.query(Fahrrad).filter(
+        Fahrrad.FahrradID == FahrradID).first()
+
+    edit_Fahrrad = EditFahrradForm()
+
+    edit_Fahrrad.FahrradID.data = Fahrrad_to_edit.FahrradID
+    edit_Fahrrad.Model.data = Fahrrad_to_edit.Model
+    edit_Fahrrad.Farbe.data = Fahrrad_to_edit.Farbe
+    edit_Fahrrad.Reifen.data = Fahrrad_to_edit.Reifen
+    edit_Fahrrad.Preis.data = Fahrrad_to_edit.Preis
+
+    return render_template("fahrrad/edit_fahrrad.html", form=edit_Fahrrad)
