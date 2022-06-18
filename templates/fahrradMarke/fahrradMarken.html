@@ -4,41 +4,35 @@
 
 <h2>🚴🏻‍♀️ Fahrradmarke</h2>
 
-<form method="post">
+<form method="post" , class="row g-2">
 
     {{form.csrf_token}}
 
-    <div class="row mb-3">
-        <label for="MarkenName" class="col-sm-2 col-form-label">Markenname</label>
-        <div class="col-sm-10">
-            {{form.MarkenName()}}
-        </div>
+
+    <div class="col-md-6">
+        <label for="Markenname" class="form-label">Markenname</label>
+        {{form.MarkenName(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="CEO" class="col-sm-2 col-form-label">CEO</label>
-        <div class="col-sm-10">
-            {{form.CEO()}}
-        </div>
+    <div class="col-md-6">
+        <label for="CEO" class="form-label">CEO</label>
+        {{form.CEO(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            {{form.Email()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Email" class="form-label">Email</label>
+        {{form.Email(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Standort" class="col-sm-2 col-form-label">Standort</label>
-        <div class="col-sm-10">
-            {{form.Standort()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Standort" class="form-label">Standort</label>
+        {{form.Standort(class_="form-control")}}
     </div>
 
-
-    <button type="submit" class="btn btn-primary">Speichern</button><br>
-</br>
+    <div class="col-md-6">
+        <button type="submit" class="btn btn-outline-dark">Speichern</button><br>
+        </br>
+    </div>
 
 </form>
 
@@ -46,7 +40,6 @@
     <thead class="table-dark">
         <tr>
             <td scope="col">FahrradMarkenID</td>
-            <td scope="col">FahrradID</td>
             <td scope="col">Markenname</td>
             <td scope="col">CEO</td>
             <td scope="col">Email</td>
@@ -59,7 +52,6 @@
         {%for fahrradMarken in fahrradMarke%}
         <tr>
             <td scope="row">{{fahrradMarken.FahrradMarkenID}}</td>
-            <td scope="row">{{fahrradMarken.FahrradID}}</td>
             <td>{{fahrradMarken.MarkenName}}</td>
             <td>{{fahrradMarken.CEO}}</td>
             <td>{{fahrradMarken.Email}}</td>
@@ -67,12 +59,13 @@
             <td>
                 <form method="post" action="/fahrradMarken/delete">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="FahrradMarkenID" id="FahrradMarkenID" value="{{fahrradMarken.FahrradMarkenID}}">
-                    <button class="btn btn-outline-secondary" onclick="deleteFahrradMarken(this); return false;">🗑️</a>
-                  </form>
+                    <input type="hidden" name="FahrradMarkenID" id="FahrradMarkenID"
+                        value="{{fahrradMarken.FahrradMarkenID}}">
+                    <button class="btn btn-outline-dark" onclick="deleteFahrradMarken(this); return false;">🗑️</a>
+                </form>
             </td>
             <td>
-                <button class="btn btn-outline-secondary" 
+                <button class="btn btn-outline-dark"
                     onclick="window.location.href='/edit_fahrradMarke?FahrradMarkenID={{fahrradMarken.FahrradMarkenID}}'">✏️</button>
             </td>
         </tr>

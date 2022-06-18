@@ -4,43 +4,37 @@
 
 <h2>👩🏻‍💼 Kunden</h2>
 
-<form method="post">
-    
-    {{form.csrf_token}}
+<form method="post" , class="row g-2">
 
-    {{form.KundenID}}
+    {{form.csrf_token()}}
 
-    <div class="row mb-3">
-        <label for="Vorname" class="col-sm-2 col-form-label">Vorname</label>
-        <div class="col-sm-10">
-            {{form.VorName()}}
-        </div>
+    {{form.KundenID()}}
+
+    <div class="col-md-6">
+        <label for="Vorname" class="form-label">Vorname</label>
+        {{form.VorName(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Nachname" class="col-sm-2 col-form-label">Nachname</label>
-        <div class="col-sm-10">
-            {{form.NachName()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Nachname" class="form-label">Nachname</label>
+        {{form.NachName(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Geburtsdatum" class="col-sm-2 col-form-label">Geburtsdatum</label>
-        <div class="col-sm-10">
-            {{form.Geburtsdatum()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Geburtsdatum" class="form-label">Geburtsdatum</label>
+        {{form.Geburtsdatum(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            {{form.Email()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Email" class="form-label">Email</label>
+        {{form.Email(class_="form-control")}}
     </div>
 
-    <button type="submit" class="btn btn-primary">Speichern</button><br>
-</br>
-    
+    <div class="col-md-6">
+        <button type="submit" class="btn btn-outline-dark">Speichern</button><br>
+        </br>
+    </div>
+
 </form>
 
 {%endblock body%}

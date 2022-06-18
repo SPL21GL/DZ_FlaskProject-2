@@ -4,43 +4,37 @@
 
 <h2>🚴🏻‍♀️ Fahrradmarke</h2>
 
-<form method="post">
+<form method="post" , class="row g-2">
 
-    {{form.csrf_token}}
+    {{form.csrf_token()}}
 
-    {{form.FahrradMarkenID}}
+    {{form.FahrradMarkenID()}}
 
-    <div class="row mb-3">
-        <label for="MarkenName" class="col-sm-2 col-form-label">Markenname</label>
-        <div class="col-sm-10">
-            {{form.MarkenName()}}
-        </div>
+
+    <div class="col-md-6">
+        <label for="Markenname" class="form-label">Markenname</label>
+        {{form.MarkenName(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="CEO" class="col-sm-2 col-form-label">CEO</label>
-        <div class="col-sm-10">
-            {{form.CEO()}}
-        </div>
+    <div class="col-md-6">
+        <label for="CEO" class="form-label">CEO</label>
+        {{form.CEO(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            {{form.Email()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Email" class="form-label">Email</label>
+        {{form.Email(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Standort" class="col-sm-2 col-form-label">Standort</label>
-        <div class="col-sm-10">
-            {{form.Standort()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Standort" class="form-label">Standort</label>
+        {{form.Standort(class_="form-control")}}
     </div>
 
-
-    <button type="submit" class="btn btn-primary">Speichern</button><br>
-</br>
+    <div class="col-md-6">
+        <button type="submit" class="btn btn-outline-dark">Speichern</button><br>
+        </br>
+    </div>
 
 </form>
 

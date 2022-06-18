@@ -4,55 +4,50 @@
 
 <h2>👩🏻‍💼 Kunden</h2>
 
-<form method="post">
-    
+<form method="post" , class="row g-2">
+
     {{form.csrf_token}}
 
-    <div class="row mb-3">
-        <label for="Vorname" class="col-sm-2 col-form-label">Vorname</label>
-        <div class="col-sm-10">
-            {{form.VorName()}}
-        </div>
+
+    <div class="col-md-6">
+        <label for="Vorname" class="form-label">Vorname</label>
+        {{form.VorName(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Nachname" class="col-sm-2 col-form-label">Nachname</label>
-        <div class="col-sm-10">
-            {{form.NachName()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Nachname" class="form-label">Nachname</label>
+        {{form.NachName(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Geburtsdatum" class="col-sm-2 col-form-label">Geburtsdatum</label>
-        <div class="col-sm-10">
-            {{form.Geburtsdatum()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Geburtsdatum" class="form-label">Geburtsdatum</label>
+        {{form.Geburtsdatum(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Email" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            {{form.Email()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Email" class="form-label">Email</label>
+        {{form.Email(class_="form-control")}}
     </div>
 
-    <button type="submit" class="btn btn-primary">Speichern</button><br>
-</br>
-    
+    <div class="col-md-6">
+        <button type="submit" class="btn btn-outline-dark">Speichern</button><br>
+        </br>
+    </div>
+
 </form>
 
 <table class="table">
     <thead class="table-dark">
-      <tr>
-        <td scope="col">KundenID</td>
-        <td scope="col">Vorname</td>
-        <td scope="col">Nachname</td>
-        <td scope="col">Geburtsdatum</td>
-        <td scope="col">Email</td>
-        <td scope="col"></td>
-        <td scope="col"></td>
+        <tr>
+            <td scope="col">KundenID</td>
+            <td scope="col">Vorname</td>
+            <td scope="col">Nachname</td>
+            <td scope="col">Geburtsdatum</td>
+            <td scope="col">Email</td>
+            <td scope="col"></td>
+            <td scope="col"></td>
 
-      </tr>
+        </tr>
     </thead>
     <tbody>
         {%for kunde in kunden%}
@@ -66,11 +61,11 @@
                 <form method="post" action="/kunden/delete">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="KundenID" id="KundenID" value="{{kunde.KundenID}}">
-                    <button class="btn btn-outline-secondary" onclick="deleteKunden(this); return false;">🗑️</a>
-                  </form>
+                    <button class="btn btn-outline-dark" onclick="deleteKunden(this); return false;">🗑️</a>
+                </form>
             </td>
             <td>
-                <button class="btn btn-outline-secondary" 
+                <button class="btn btn-outline-dark"
                     onclick="window.location.href='/edit_kunden?KundenID={{kunde.KundenID}}'">✏️</button>
             </td>
         </tr>

@@ -4,42 +4,36 @@
 
 <h2>🚲 Fahrrad</h2>
 
-<form method="post">
+<form method="post" , class="row g-2">
 
-    {{form.csrf_token}}
+    {{form.csrf_token()}}
 
-    {{form.FahrradID}}
+    {{form.FahrradID()}}
 
-    <div class="row mb-3">
-        <label for="Model" class="col-sm-2 col-form-label">Model</label>
-        <div class="col-sm-10">
-            {{form.Model()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Model" class="form-label">Model</label>
+        {{form.Model(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Farbe" class="col-sm-2 col-form-label">Farbe</label>
-        <div class="col-sm-10">
-            {{form.Farbe}}
-        </div>
+    <div class="col-md-6">
+        <label for="Farbe" class="form-label">Farbe</label>
+        {{form.Farbe(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Reifen" class="col-sm-2 col-form-label">Reifen</label>
-        <div class="col-sm-10">
-            {{form.Reifen()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Reifen" class="form-label">Reifen</label>
+        {{form.Reifen(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="Preis" class="col-sm-2 col-form-label">Preis</label>
-        <div class="col-sm-10">
-            {{form.Preis()}}
-        </div>
+    <div class="col-md-6">
+        <label for="Preis" class="form-label">Preis</label>
+        {{form.Preis(class_="form-control")}}
     </div>
 
-    <button type="submit" class="btn btn-primary">Speichern</button><br>
-    </br>
+    <div class="col-md-6">
+        <button type="submit" class="btn btn-outline-dark">Speichern</button><br>
+        </br>
+    </div>
 
 </form>
 
