@@ -7,5 +7,3 @@ class EditAusleihenForm(FlaskForm):
     AusleihenID = HiddenField("AusleihenID")
     AusleiheDatum = DateField("AusleiheDatum")
     RückgabeDatum = DateField("RückgabeDatum")
-    KundenID = HiddenField("KundenID")
-    FahrradID = HiddenField("FahrradID")
