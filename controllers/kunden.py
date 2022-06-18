@@ -42,16 +42,16 @@ def del_kunden_base():
     if delete_Kunden.validate_on_submit():
         print("Gültig")
 
-        Kunde_to_delete = delete_Kunden.KundenID.data
+        KundenID_to_delete = delete_Kunden.KundenID.data
         Kunde_to_delete = db.session.query(Kunden).filter(
-            Kunden.KundenID == Kunde_to_delete)
+            Kunden.KundenID == KundenID_to_delete)
         Kunde_to_delete.delete()
 
         db.session.commit()
 
     else:
         print("Fatal Error")
-    flash(f"Kunde with id {Kunde_to_delete} has been deleted")
+    flash(f"Kunde with id {KundenID_to_delete} has been deleted")
     return redirect("/kunden")
 
 

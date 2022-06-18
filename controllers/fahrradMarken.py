@@ -41,16 +41,16 @@ def del_fahrradMarken_base():
     if delete_FahrradMarke.validate_on_submit():
         print("Gültig")
 
-        FahrradMarke_to_delete = delete_FahrradMarke.FahrradMarkenID.data
+        FahrradMarkeID_to_delete = delete_FahrradMarke.FahrradMarkenID.data
         FahrradMarke_to_delete = db.session.query(Fahrradmarke).filter(
-            Fahrradmarke.FahrradMarkenID == FahrradMarke_to_delete)
+            Fahrradmarke.FahrradMarkenID == FahrradMarkeID_to_delete)
         FahrradMarke_to_delete.delete()
 
         db.session.commit()
 
     else:
         print("Fatal Error")
-    flash(f"FahrradMarke with id {FahrradMarke_to_delete} has been deleted")
+    flash(f"FahrradMarke with id {FahrradMarkeID_to_delete} has been deleted")
     return redirect("/fahrradMarken")
 
 
@@ -65,7 +65,6 @@ def edit_FahrradMarken_base():
         FahrradMarke_to_edit = db.session.query(Fahrradmarke).filter(
             Fahrradmarke.FahrradMarkenID == FahrradMarkenID).first()
 
-        FahrradMarke_to_edit.FahrradID = edit_FahrradMarken.FahrradID.data
         FahrradMarke_to_edit.MarkenName = edit_FahrradMarken.MarkenName.data
         FahrradMarke_to_edit.CEO = edit_FahrradMarken.CEO.data
         FahrradMarke_to_edit.Email = edit_FahrradMarken.Email.data
@@ -91,7 +90,6 @@ def showEditFahrradMarkenForm():
     edit_FahrradMarke = EditFahrradMarkenForm()
 
     edit_FahrradMarke.FahrradMarkenID.data = FahrradMarke_to_edit.FahrradMarkenID
-    edit_FahrradMarke.FahrradID.data = FahrradMarke_to_edit.FahrradID
     edit_FahrradMarke.MarkenName.data = FahrradMarke_to_edit.MarkenName
     edit_FahrradMarke.CEO.data = FahrradMarke_to_edit.CEO
     edit_FahrradMarke.Email.data = FahrradMarke_to_edit.Email
