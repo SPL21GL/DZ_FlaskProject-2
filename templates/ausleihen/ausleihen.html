@@ -4,37 +4,35 @@
 
 <h2>🤝🏻 Ausleihen</h2>
 
-<form method="post">
+<form method="post" , class="row g-2">
 
     {{form.csrf_token}}
 
-    <div class="row mb-3">
-        <label for="AusleiheDatum" class="col-sm-2 col-form-label">AusleiheDatum</label>
-        <div class="col-sm-10">
-            {{form.AusleiheDatum()}}
-        </div>
+
+    <div class="col-md-6">
+        <label for="AusleiheDatum" class="form-label">Ausleihedatum</label>
+        {{form.AusleiheDatum(class_="form-control")}}
     </div>
 
-    <div class="row mb-3">
-        <label for="RückgabeDatum" class="col-sm-2 col-form-label">RückgabeDatum</label>
-        <div class="col-sm-10">
-            {{form.RückgabeDatum}}
-        </div>
+    <div class="col-md-6">
+        <label for="RückgabeDatum" class="form-label">Rückgabedatum</label>
+        {{form.RückgabeDatum(class_="form-control")}}
     </div>
 
-    <button type="submit" class="btn btn-primary">Speichern</button><br>
-    </br>
+    <div class="col-md-6">
+        <button type="submit" class="btn btn-outline-dark">Speichern</button><br>
+        </br>
+    </div>
 
 </form>
+
 
 <table class="table">
     <thead class="table-dark">
         <tr>
             <td scope="col">AusleihenID</td>
-            <td scope="col">KundenID</td>
-            <td scope="col">FahrradID</td>
-            <td scope="col">AusleiheDatum</td>
-            <td scope="col">RückgabeDatum</td>
+            <td scope="col">Ausleihedatum</td>
+            <td scope="col">Rückgabedatum</td>
             <td scope="col"></td>
             <td scope="col"></td>
         </tr>
@@ -43,19 +41,17 @@
         {%for ausleihen in ausleihen%}
         <tr>
             <td scope="row">{{ausleihen.AusleihenID}}</td>
-            <td scope="row">{{ausleihen.KundenID}}</td>
-            <td scope="row">{{ausleihen.FahrradID}}</td>
             <td>{{ausleihen.AusleiheDatum}}</td>
             <td>{{ausleihen.RückgabeDatum}}</td>
             <td>
                 <form method="post" action="/ausleihen/delete">
                     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
                     <input type="hidden" name="AusleihenID" id="AusleihenID" value="{{ausleihen.AusleihenID}}">
-                    <button class="btn btn-outline-secondary" onclick="deleteAusleihen(this); return false;">🗑️</a>
-                  </form>
+                    <button class="btn btn-outline-dark" onclick="deleteAusleihen(this); return false;">🗑️</a>
+                </form>
             </td>
             <td>
-                <button class="btn btn-outline-secondary" 
+                <button class="btn btn-outline-dark"
                     onclick="window.location.href='/edit_ausleihen?AusleihenID={{ausleihen.AusleihenID}}'">✏️</button>
             </td>
         </tr>
