@@ -33,23 +33,25 @@ def fahrrad_base():
                            form=addFahrradForm,
                            fahrrad=fahrrad)
 
+
 @fahrrad_blueprint.route("/fahrrad/delete", methods=["post"])
 def del_fahrrad_base():
     delete_Fahrrad = DeleteForm_Fahrrad()
     if delete_Fahrrad.validate_on_submit():
         print("Gültig")
 
-        Fahrrad_to_delete = delete_Fahrrad.FahrradID.data
+        FahrradID_to_delete = delete_Fahrrad.FahrradID.data
         Fahrrad_to_delete = db.session.query(Fahrrad).filter(
-            Fahrrad.FahrradID == Fahrrad_to_delete)
+            Fahrrad.FahrradID == FahrradID_to_delete)
         Fahrrad_to_delete.delete()
 
         db.session.commit()
 
     else:
         raise("Fatal Error")
-    flash(f"Fahrrad with id {Fahrrad_to_delete} has been deleted")
+    flash(f"Fahrrad with id {FahrradID_to_delete} has been deleted")
     return redirect("/fahrrad")
+
 
 @fahrrad_blueprint.route("/edit_fahrrad", methods=["post"])
 def edit_fahrrad_base():
